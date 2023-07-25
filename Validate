@@ -1,0 +1,330 @@
+                                    QC Validation For DS Dataset
+
+                                        The COMPARE Procedure                                         
+                                Comparison of ANADATA.DS with WORK.DS                                 
+                                            (Method=EXACT)                                            
+                                                                                                      
+                                          Data Set Summary                                            
+                                                                                                      
+              Dataset              Created          Modified  NVar    NObs  Label                     
+                                                                                                      
+              ANADATA.DS  14NOV16:14:41:14  14NOV16:14:41:14    14     814  Disposition               
+              WORK.DS     16JAN22:00:01:46  16JAN22:00:01:46    10     814                            
+                                                                                                      
+                                                                                                      
+                                          Variables Summary                                           
+                                                                                                      
+                       Number of Variables in Common: 9.                                              
+                       Number of Variables in ANADATA.DS but not in WORK.DS: 5.                       
+                       Number of Variables in WORK.DS but not in ANADATA.DS: 1.                       
+                       Number of Variables with Differing Attributes: 6.                              
+                                                                                                      
+                                                                                                      
+                        Listing of Variables in ANADATA.DS but not in WORK.DS                         
+                                                                                                      
+                       Variable  Type  Length  Format  Label                                          
+                                                                                                      
+                       DSREFID   Char      40          Reference ID                                   
+                       VISITNUM  Num        8  8.      Visit Number                                   
+                       VISIT     Char      40  $50.    Visit Name                                     
+                       EPOCH     Char      40          Epoch                                          
+                       DSDTC     Char      20          Date/Time of Collection                        
+                                                                                                      
+                                                                                                      
+                        Listing of Variables in WORK.DS but not in ANADATA.DS                         
+                                                                                                      
+                      Variable  Type  Length  Label                                                   
+                                                                                                      
+                      DSSCAT    Char      19  Subcategory for disposition event                       
+                                                                                                      
+                                                                                                      
+                        Listing of Common Variables with Differing Attributes                         
+                                                                                                      
+          Variable  Dataset     Type  Length  Format  Label                                           
+                                                                                                      
+          STUDYID   ANADATA.DS  Char      20  $8.     Study Identifier                                
+                    WORK.DS     Char       8  $8.     Study Identifier                                
+          DOMAIN    ANADATA.DS  Char       2          Domain Abbreviation                             
+                    WORK.DS     Char       3          Domain Abbreviation                             
+          USUBJID   ANADATA.DS  Char      40          Unique Subject Identifier                       
+                    WORK.DS     Char      30          Unique Subject Identifier                       
+          DSDECOD   ANADATA.DS  Char     200  $100.   Standardized Disposition Term                   
+                    WORK.DS     Char     100  $100.   Standardized Disposition Term                   
+                                                                                                      
+                                                                                                      
+                                                                                                      
+
+ 
+                                        The COMPARE Procedure                                         
+                                Comparison of ANADATA.DS with WORK.DS                                 
+                                            (Method=EXACT)                                            
+                                                                                                      
+                        Listing of Common Variables with Differing Attributes                         
+                                                                                                      
+          Variable  Dataset     Type  Length  Format  Label                                           
+                                                                                                      
+          DSCAT     ANADATA.DS  Char      40          Category for Disposition Event                  
+                    WORK.DS     Char      18          Category for Disposition Event                  
+          DSSTDTC   ANADATA.DS  Char      19  $19.    Start Date/Time of Disposition Event            
+                    WORK.DS     Char      19  $19.     Start Date/Time of disposition event           
+                                                                                                      
+                                                                                                      
+                                         Observation Summary                                          
+                                                                                                      
+                                    Observation      Base  Compare                                    
+                                                                                                      
+                                    First Obs           1        1                                    
+                                    First Unequal       2        2                                    
+                                    Last  Unequal     814      814                                    
+                                    Last  Obs         814      814                                    
+                                                                                                      
+                  Number of Observations in Common: 814.                                              
+                  Total Number of Observations Read from ANADATA.DS: 814.                             
+                  Total Number of Observations Read from WORK.DS: 814.                                
+                                                                                                      
+                  Number of Observations with Some Compared Variables Unequal: 469.                   
+                  Number of Observations with All Compared Variables Equal: 345.                      
+                                                                                                      
+                                                                                                      
+                                      Values Comparison Summary                                       
+                                                                                                      
+                   Number of Variables Compared with All Observations Equal: 5.                       
+                   Number of Variables Compared with Some Observations Unequal: 4.                    
+                   Number of Variables with Missing Value Differences: 2.                             
+                   Total Number of Values which Compare Unequal: 574.                                 
+                   Maximum Difference: 0.                                                             
+                                                                                                      
+                                                                                                      
+                                    Variables with Unequal Values                                     
+                                                                                                      
+    Variable  Type  Len1 Len2   Label                                    Ndif   MaxDif  MissDif       
+                                                                                                      
+    DSTERM    CHAR   200  200   Reported Term for the Disposition Event     3                 0       
+    DSDECOD   CHAR   200  100   Standardized Disposition Term             176                 0       
+    DSCAT     CHAR    40   18   Category for Disposition Event              1                 1       
+    DSSTDY    NUM      8    8   Study Day of Start of Disposition Event   394        0      394       
+                                                                                                      
+ 
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+
+ 
+                                        The COMPARE Procedure                                         
+                                Comparison of ANADATA.DS with WORK.DS                                 
+                                            (Method=EXACT)                                            
+                                                                                                      
+                                Value Comparison Results for Variables                                
+                                                                                                      
+                      __________________________________________________________                      
+                                 ||  Reported Term for the Disposition Event                          
+                                 ||  Base Value           Compare Value                               
+                             Obs ||  DSTERM                DSTERM                                     
+                       ________  ||  ___________________+  ___________________+                       
+                                 ||                                                                   
+                            231  ||  #3 POSITIVE NALOXONE  3 POSITIVE NALOXONE                        
+                            298  ||  CRITERION #19         CRITERION 19                               
+                            755  ||  CRITERION #19         CRITERION 19                               
+                      __________________________________________________________                      
+                                                                                                      
+                                                                                                      
+                      __________________________________________________________                      
+                                 ||  Standardized Disposition Term                                    
+                                 ||  Base Value           Compare Value                               
+                             Obs ||  DSDECOD               DSDECOD                                    
+                       ________  ||  ___________________+  ___________________+                       
+                                 ||                                                                   
+                             12  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                             31  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                             34  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                             44  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                             50  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                             57  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                             65  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                             72  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                             80  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            111  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            116  ||  SUBJECT DID NOT MEET  SCREEN FAILURE                             
+                            118  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            120  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            122  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            124  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            130  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            133  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            146  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            149  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            168  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            171  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            188  ||  INCARCERATION         LOST TO FOLLOW-UP                          
+                            191  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            194  ||  INVESTIGATOR JUDGMEN  PHYSICIAN DECISION                         
+                            199  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            217  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            225  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                                                                                                      
+                                                                                                      
+
+ 
+                                        The COMPARE Procedure                                         
+                                Comparison of ANADATA.DS with WORK.DS                                 
+                                            (Method=EXACT)                                            
+                                                                                                      
+                                Value Comparison Results for Variables                                
+                                                                                                      
+                      __________________________________________________________                      
+                                 ||  Standardized Disposition Term                                    
+                                 ||  Base Value           Compare Value                               
+                             Obs ||  DSDECOD               DSDECOD                                    
+                       ________  ||  ___________________+  ___________________+                       
+                                 ||                                                                   
+                            227  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            229  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            231  ||  SUBJECT DID NOT MEET  SCREEN FAILURE                             
+                            235  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            237  ||  SUBJECT LOST TO FOLL  LOST TO FOLLOW-UP                          
+                            239  ||  SUBJECT LOST TO FOLL  LOST TO FOLLOW-UP                          
+                            241  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            245  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            247  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            249  ||  SUBJECT DID NOT MEET  SCREEN FAILURE                             
+                            251  ||  SUBJECT DID NOT MEET  SCREEN FAILURE                             
+                            253  ||  SUBJECT DID NOT MEET  SCREEN FAILURE                             
+                            255  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            257  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            263  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            270  ||  INVESTIGATOR JUDGMEN  PHYSICIAN DECISION                         
+                            277  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            292  ||  SUBJECT DID NOT MEET  SCREEN FAILURE                             
+                            294  ||  SUBJECT DID NOT MEET  SCREEN FAILURE                             
+                            298  ||  SUBJECT DID NOT MEET  SCREEN FAILURE                             
+                            304  ||  INVESTIGATOR JUDGMEN  PHYSICIAN DECISION                         
+                            315  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                            324  ||  SUBJECT WITHDREW CON  WITHDRAWAL OF CONSEN                       
+                                                                                                      
+NOTE: The MAXPRINT=50 printing limit has been reached for the variable DSDECOD. No more values will   
+      be printed for this comparison.                                                                 
+                      __________________________________________________________                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+
+ 
+                                        The COMPARE Procedure                                         
+                                Comparison of ANADATA.DS with WORK.DS                                 
+                                            (Method=EXACT)                                            
+                                                                                                      
+                                Value Comparison Results for Variables                                
+                                                                                                      
+                      __________________________________________________________                      
+                                 ||  Category for Disposition Event                                   
+                                 ||  Base Value           Compare Value                               
+                             Obs ||  DSCAT                 DSCAT                                      
+                       ________  ||  ___________________+  __________________                         
+                                 ||                                                                   
+                            229  ||                        DISPOSITION EVENT                          
+                      __________________________________________________________                      
+                                                                                                      
+                                                                                                      
+                      __________________________________________________________                      
+                                 ||  Study Day of Start of Disposition Event                          
+                                 ||       Base    Compare                                             
+                             Obs ||     DSSTDY     DSSTDY      Diff.     % Diff                       
+                       ________  ||  _________  _________  _________  _________                       
+                                 ||                                                                   
+                              2  ||     1.0000          .          .          .                       
+                              4  ||     1.0000          .          .          .                       
+                              6  ||     1.0000          .          .          .                       
+                              7  ||    32.0000          .          .          .                       
+                              9  ||     1.0000          .          .          .                       
+                             11  ||     1.0000          .          .          .                       
+                             12  ||   125.0000          .          .          .                       
+                             14  ||     1.0000          .          .          .                       
+                             16  ||     1.0000          .          .          .                       
+                             17  ||   150.0000          .          .          .                       
+                             19  ||     1.0000          .          .          .                       
+                             21  ||     1.0000          .          .          .                       
+                             23  ||     1.0000          .          .          .                       
+                             24  ||    18.0000          .          .          .                       
+                             26  ||     1.0000          .          .          .                       
+                             28  ||     1.0000          .          .          .                       
+                             30  ||     1.0000          .          .          .                       
+                             31  ||   155.0000          .          .          .                       
+                             33  ||     1.0000          .          .          .                       
+                             34  ||    64.0000          .          .          .                       
+                             36  ||     1.0000          .          .          .                       
+                             37  ||    24.0000          .          .          .                       
+                             39  ||     1.0000          .          .          .                       
+                             41  ||     1.0000          .          .          .                       
+                             43  ||     1.0000          .          .          .                       
+                             44  ||   205.0000          .          .          .                       
+                             46  ||     1.0000          .          .          .                       
+                             47  ||    52.0000          .          .          .                       
+                             49  ||     1.0000          .          .          .                       
+                                                                                                      
+                                                                                                      
+
+ 
+                                        The COMPARE Procedure                                         
+                                Comparison of ANADATA.DS with WORK.DS                                 
+                                            (Method=EXACT)                                            
+                                                                                                      
+                                Value Comparison Results for Variables                                
+                                                                                                      
+                      __________________________________________________________                      
+                                 ||  Study Day of Start of Disposition Event                          
+                                 ||       Base    Compare                                             
+                             Obs ||     DSSTDY     DSSTDY      Diff.     % Diff                       
+                       ________  ||  _________  _________  _________  _________                       
+                                 ||                                                                   
+                             50  ||   133.0000          .          .          .                       
+                             52  ||     1.0000          .          .          .                       
+                             54  ||     1.0000          .          .          .                       
+                             56  ||     1.0000          .          .          .                       
+                             57  ||    58.0000          .          .          .                       
+                             59  ||     1.0000          .          .          .                       
+                             61  ||     1.0000          .          .          .                       
+                             62  ||    62.0000          .          .          .                       
+                             64  ||     1.0000          .          .          .                       
+                             65  ||    35.0000          .          .          .                       
+                             67  ||     1.0000          .          .          .                       
+                             69  ||     1.0000          .          .          .                       
+                             71  ||     1.0000          .          .          .                       
+                             72  ||   169.0000          .          .          .                       
+                             74  ||     1.0000          .          .          .                       
+                             75  ||   160.0000          .          .          .                       
+                             77  ||     1.0000          .          .          .                       
+                             79  ||     1.0000          .          .          .                       
+                             80  ||   115.0000          .          .          .                       
+                             82  ||     1.0000          .          .          .                       
+                             84  ||     1.0000          .          .          .                       
+                                                                                                      
+NOTE: The MAXPRINT=50 printing limit has been reached for the variable DSSTDY. No more values will be 
+      printed for this comparison.                                                                    
+                      __________________________________________________________                      
+
+ 
+PERSONAL NOTE
+	The below variable was present on the validation side dataset but absent in the base dataset
+Variable	Core
+DSSCAT  Subcategory for disposition event                       	Perm
+Setting it as either of Protocol milestone or Study Participation 
+	Removal of inconsistent string like “#” in the DSTERM 
+	Standardizing some of the elements of the DSDECOD which are not corresponding to the STDM terminology:
+•	SUBJECT WITHDREW CONSENT TO WITHDRAWAL OF CONSENT.
+•	SUBJECT WITHDREW CONSENT, SUBJECT WITHDREW CONSENT: TIME CONSTRAINTS, SUBJECT RELOCATED TO WITHDRAWAL OF CONSENT.
+•	SUBJECT DID NOT MEET INCLUSION/EXCLUSION CRITERIA TO SCREEN FAILURE.
+•	INVESTIGATOR JUDGMENT TO PHYSICIAN DECISION.
+•	INCARCERATION, SUBJECT LOST TO FOLLOW-UP, SUBJECT RELOCATED TO LOST TO FOLLOW-UP. 
+•	MAJOR PROTOCOL VIOLATION TO PROTOCOL VIOLATION.
