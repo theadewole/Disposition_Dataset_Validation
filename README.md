@@ -37,5 +37,5 @@ subject.
 ## Output
 - [Dataset](https://github.com/theadewole/Disposition_Dataset_Validation/blob/main/ds.sas7bdat)
 - [Program](https://github.com/theadewole/Disposition_Dataset_Validation/blob/main/DS.sas)
-- [Log](https://github.com/theadewole/Disposition_Dataset_Validation/blob/main/DS.sas)
+- [Log](https://github.com/theadewole/Disposition_Dataset_Validation/blob/main/DS.log)
 - [Validate](https://github.com/theadewole/Disposition_Dataset_Validation/blob/main/Validate)
