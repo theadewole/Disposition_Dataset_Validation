@@ -1,0 +1,382 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1476  DATA com_1;
+1477      RENAME STUDYID1=STUDYID;
+1478      LENGTH STUDYID1 $8;
+1479      SET rawdata.Comvar;
+1480      STUDYID1=COMPRESS(PUT(STUDYID,$char10.),"-");
+1481      DROP STUDYID;
+1482  RUN;
+
+NOTE: There were 250 observations read from the data set RAWDATA.COMVAR.
+NOTE: The data set WORK.COM_1 has 250 observations and 19 variables.
+NOTE: Compressing data set WORK.COM_1 decreased size by 0.00 percent. 
+      Compressed is 2 pages; un-compressed would require 2 pages.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+1483  
+1484  /*Sorting the comvar dataset*/
+1485  PROC SORT DATA=com_1 OUT=Com_2;
+1486      BY USUBJID;
+1487  RUN;
+
+NOTE: There were 250 observations read from the data set WORK.COM_1.
+NOTE: The data set WORK.COM_2 has 250 observations and 19 variables.
+NOTE: Compressing data set WORK.COM_2 decreased size by 0.00 percent. 
+      Compressed is 2 pages; un-compressed would require 2 pages.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1488  
+1489  /*Specifying DSTERM,DSDECOD and USUBJID In DM dataset*/
+1490  DATA  DM_1;
+1491      LENGTH DSTERM $200 DSDECOD $100;
+1492      SET rawdata.Dm;
+1493      USUBJID=PUT(CATX("-",STUDYID,SITEID,SUBJID),$char30.);
+1494      IF DOVDTC NE " " THEN DSTERM="INFORMED CONSENT OBTAINED";
+1495      DSDECOD=DSTERM;
+1496  RUN;
+
+NOTE: There were 335 observations read from the data set RAWDATA.DM.
+NOTE: The data set WORK.DM_1 has 335 observations and 14 variables.
+NOTE: Compressing data set WORK.DM_1 decreased size by 33.33 percent. 
+      Compressed is 2 pages; un-compressed would require 3 pages.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+1497  
+1498  /*Sorting DM dataset*/
+1499  PROC SORT DATA=DM_1 OUT=DM_2;
+1500      BY USUBJID;
+1501  RUN;
+
+NOTE: There were 335 observations read from the data set WORK.DM_1.
+NOTE: The data set WORK.DM_2 has 335 observations and 14 variables.
+NOTE: Compressing data set WORK.DM_2 decreased size by 33.33 percent. 
+      Compressed is 2 pages; un-compressed would require 3 pages.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1502  
+1503  /*Creating USUBJID from rand*/
+1504  DATA  Rand_1;
+1505      SET rawdata.rand;
+1506      USUBJID=PUT(CATX("-",STUDYID,SITEID,SUBJID),$char30.);
+1507  RUN;
+
+NOTE: There were 335 observations read from the data set RAWDATA.RAND.
+NOTE: The data set WORK.RAND_1 has 335 observations and 11 variables.
+NOTE: Compressing data set WORK.RAND_1 decreased size by 33.33 percent. 
+      Compressed is 2 pages; un-compressed would require 3 pages.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1508  
+1509  /*Sorting the rand dataset*/
+1510  PROC SORT DATA=Rand_1   OUT=Rand_2;
+1511      BY USUBJID;
+1512  RUN;
+
+NOTE: There were 335 observations read from the data set WORK.RAND_1.
+NOTE: The data set WORK.RAND_2 has 335 observations and 11 variables.
+NOTE: Compressing data set WORK.RAND_2 decreased size by 33.33 percent. 
+      Compressed is 2 pages; un-compressed would require 3 pages.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1513  
+1514  /*Creating USUBJID in DS Dataset*/
+1515  DATA  Ds_1;
+1516      SET rawdata.ds;
+1517      USUBJID=PUT(CATX("-",STUDYID,SITEID,SUBJID),$char30.);
+1518  RUN;
+
+NOTE: There were 144 observations read from the data set RAWDATA.DS.
+NOTE: The data set WORK.DS_1 has 144 observations and 7 variables.
+NOTE: Compressing data set WORK.DS_1 increased size by 100.00 percent. 
+      Compressed is 2 pages; un-compressed would require 1 pages.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+1519  
+1520  /*Sorting the Ds dataset*/
+1521  PROC SORT DATA=Ds_1 OUT=Ds_2;
+1522      BY USUBJID;
+1523  RUN;
+
+NOTE: There were 144 observations read from the data set WORK.DS_1.
+NOTE: The data set WORK.DS_2 has 144 observations and 7 variables.
+NOTE: Compressing data set WORK.DS_2 increased size by 100.00 percent. 
+      Compressed is 2 pages; un-compressed would require 1 pages.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1524  
+1525  /*Merging the dataset*/
+1526  DATA DMCOM;
+1527      MERGE Dm_2 Com_2;
+1528      BY USUBJID;
+1529  RUN;
+
+NOTE: There were 335 observations read from the data set WORK.DM_2.
+NOTE: There were 250 observations read from the data set WORK.COM_2.
+NOTE: The data set WORK.DMCOM has 335 observations and 31 variables.
+NOTE: Compressing data set WORK.DMCOM decreased size by 40.00 percent. 
+      Compressed is 3 pages; un-compressed would require 5 pages.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1530  
+1531  /*Merging Rand to the already merged Dm and Comvar*/
+1532  DATA DMCOMRAN;
+1533      SET DMCOM Rand_2;
+1534      BY USUBJID;
+1535  RUN;
+
+NOTE: There were 335 observations read from the data set WORK.DMCOM.
+NOTE: There were 335 observations read from the data set WORK.RAND_2.
+NOTE: The data set WORK.DMCOMRAN has 670 observations and 32 variables.
+NOTE: Compressing data set WORK.DMCOMRAN decreased size by 55.56 percent. 
+      Compressed is 4 pages; un-compressed would require 9 pages.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1536  
+1537  /*Merging DS to the already merged Dm,Comvar,Rand*/
+1538  DATA All_Set;
+1539      SET DMCOMRAN DS_1;
+1540      BY USUBJID;
+1541  RUN;
+
+NOTE: There were 670 observations read from the data set WORK.DMCOMRAN.
+NOTE: There were 144 observations read from the data set WORK.DS_1.
+NOTE: The data set WORK.ALL_SET has 814 observations and 32 variables.
+NOTE: Compressing data set WORK.ALL_SET decreased size by 60.00 percent. 
+      Compressed is 4 pages; un-compressed would require 10 pages.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1542  
+1543  /*Specifying Domain*/
+1544  DATA DSS;
+1545      LENGTH DOMAIN $3;
+1546      SET All_Set;
+1547      DOMAIN="DS";
+1548      DSTERM=COMPRESS(DSTERM,"#");
+1549      IF DSDECOD EQ "SUBJECT WITHDREW CONSENT" THEN DSDECOD="WITHDRAWAL OF CONSENT";
+1550      IF DSDECOD IN ("SUBJECT WITHDREW CONSENT","SUBJECT WITHDREW CONSENT: TIME
+1550! CONSTRAINTS","SUBJECT RELOCATED")
+1551      THEN DSDECOD="WITHDRAWAL OF CONSENT";
+1552      IF DSDECOD IN ("SUBJECT DID NOT MEET INCLUSION/EXCLUSION CRITERIA")THEN DSDECOD="SCREEN
+1552! FAILURE";
+1553      IF DSDECOD IN ("INVESTIGATOR JUDGMENT")THEN DSDECOD="PHYSICIAN DECISION";
+1554      IF DSDECOD IN ("INCARCERATION","SUBJECT LOST TO FOLLOW-UP","SUBJECT RELOCATED")
+1555      THEN DSDECOD="LOST TO FOLLOW-UP";
+1556      IF DSDECOD IN ("MAJOR PROTOCOL VIOLATION")THEN DSDECOD="PROTOCOL VIOLATION";
+1557  RUN;
+
+NOTE: There were 814 observations read from the data set WORK.ALL_SET.
+NOTE: The data set WORK.DSS has 814 observations and 33 variables.
+NOTE: Compressing data set WORK.DSS decreased size by 60.00 percent. 
+      Compressed is 4 pages; un-compressed would require 10 pages.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+1558  
+1559  /*Specifying DSCAT,DSSCAT*/
+1560  PROC SQL;
+1561      CREATE TABLE DSSS AS
+1562      SELECT *, CASE
+1563      WHEN DSDECOD IN ("RANDOMIZED","INFORMED CONSENT OBTAINED") THEN "PROTOCOL MILESTONE"
+1564      ELSE "DISPOSITION EVENT"
+1565      END AS DSCAT,
+1566      CASE
+1567      WHEN DSDECOD NOT IN ("RANDOMIZED","INFORMED CONSENT OBTAINED") THEN "STUDY PARTICIPATION"
+1568      ELSE ""
+1569      END AS DSSCAT
+1570      FROM DSS;
+NOTE: Compressing data set WORK.DSSS decreased size by 63.64 percent. 
+      Compressed is 4 pages; un-compressed would require 11 pages.
+NOTE: Table WORK.DSSS created, with 814 rows and 35 columns.
+
+1571  QUIT;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1572  
+1573  /*Specifying DSSCAT*/
+1574  DATA DSSS1;
+1575      SET DSSS;
+1576      DSSTDTC1=INPUT(DSSTDTC,anydtdte32.);
+1577      RFSTDTC=INPUT(_RFSTDTC,anydtdte32.);
+1578      IF DSSTDTC1 GE RFSTDTC THEN DSSTDY=(DSSTDTC1-RFSTDTC)+1;
+1579      ELSE DSSTDY=DSSTDTC1-RFSTDTC;
+1580  RUN;
+
+NOTE: Missing values were generated as a result of performing an operation on missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      564 at 1578:49   
+NOTE: There were 814 observations read from the data set WORK.DSSS.
+NOTE: The data set WORK.DSSS1 has 814 observations and 38 variables.
+NOTE: Compressing data set WORK.DSSS1 decreased size by 54.55 percent. 
+      Compressed is 5 pages; un-compressed would require 11 pages.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+1581  
+1582  /*Sorting the dataset with USUBJID, DSSTDTC, and DSDECOD*/
+1583  PROC SORT DATA=DSSS1   OUT=DSsort;
+1584      BY USUBJID DSSTDTC DSDECOD;
+1585  RUN;
+
+NOTE: There were 814 observations read from the data set WORK.DSSS1.
+NOTE: The data set WORK.DSSORT has 814 observations and 38 variables.
+NOTE: Compressing data set WORK.DSSORT decreased size by 54.55 percent. 
+      Compressed is 5 pages; un-compressed would require 11 pages.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1586  
+1587  /*Creating DSSEQ*/
+1588  DATA DSS2;
+1589      SET DSsort;
+1590      BY USUBJID DSSTDTC DSDECOD;
+1591      IF FIRST.USUBJID THEN DSSEQ=1;
+1592      ELSE DSSEQ+1;
+1593  RUN;
+
+NOTE: There were 814 observations read from the data set WORK.DSSORT.
+NOTE: The data set WORK.DSS2 has 814 observations and 39 variables.
+NOTE: Compressing data set WORK.DSS2 decreased size by 54.55 percent. 
+      Compressed is 5 pages; un-compressed would require 11 pages.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1594  
+1595  /*Creating DS Dataset*/
+1596  PROC SQL;
+1597      CREATE TABLE DS AS
+1598      SELECT
+1599      STUDYID         "Study Identifier",
+1600      DOMAIN          "Domain Abbreviation",
+1601      USUBJID         "Unique Subject Identifier",
+1602      DSSEQ           "Sequence Number",
+1603      DSTERM          "Reported Term for the Disposition Event",
+1604      DSDECOD         "Standardized Disposition Term",
+1605      DSCAT           "Category for Disposition Event",
+1606      DSSCAT          "Subcategory for disposition event",
+1607      DSSTDTC         " Start Date/Time of disposition event",
+1608      DSSTDY          "Study Day of Start of Disposition Event"
+1609      FROM DSS2;
+NOTE: Compressing data set WORK.DS decreased size by 50.00 percent. 
+      Compressed is 3 pages; un-compressed would require 6 pages.
+NOTE: Table WORK.DS created, with 814 rows and 10 columns.
+
+1610  QUIT;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1611  
+1612  /*Creating a  DS.sas7bdat*/
+1613  PROC COPY IN=work OUT=output;
+1614      SELECT DS;
+1615  RUN;
+
+NOTE: Copying WORK.DS to OUTPUT.DS (memtype=DATA).
+NOTE: There were 814 observations read from the data set WORK.DS.
+NOTE: The data set OUTPUT.DS has 814 observations and 10 variables.
+NOTE: Compressing data set OUTPUT.DS decreased size by 50.00 percent. 
+      Compressed is 3 pages; un-compressed would require 6 pages.
+NOTE: PROCEDURE COPY used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+1616  
+1617  /*Creating RTF for the compare output*/
+1618  TITLE "QC Validation For DS Dataset";
+1619  FOOTNOTE "Validating Anadata DS dataset with created DS dataset";
+1620  ODS LISTING CLOSE;
+1621  ODS RTF FILE="&workpath\08Validate\DS.RTF";
+NOTE: Writing RTF Body file: C:\\Users\AFSS-Student\Documents\Internship Series\03.QC of SDTM 
+      Datasets Development (Demography and Disposition)\work\08Validate\DS.RTF
+1622  PROC COMPARE BASE=Anadata.DS COMP=Work.DS LISTALL;
+1623  RUN;
+
+NOTE: Non-portable document will be produced. The current settings of FORMCHAR use nonstandard 
+      line-drawing characters and the resulting output file will not render correctly unless all 
+      readers of the document have the SAS Monospace font installed. To make your document portable, 
+      issue the following command: 
+      OPTIONS FORMCHAR="|----|+|---+=|-/\<>*";
+
+NOTE: There were 814 observations read from the data set ANADATA.DS.
+NOTE: There were 814 observations read from the data set WORK.DS.
+NOTE: PROCEDURE COMPARE used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.04 seconds
+      
+
+1624  ODS RTF CLOSE;
+
+1658  /*Generating Log*/
+1659  PROC PRINTTO LOG="&workpath\06out_logs\QC_adsl.Log" New;
+1660  OPTION FMTERR;
+1661  %INCLUDE "C:\Users\AFSS-Student\Documents\Internship Series\04.ADaM Dataset Validation
+1661! (ADSL)\Work\04utility\initial.sas";
+NOTE: Libref RAWDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: C:\\Users\AFSS-Student\Documents\Internship Series\04.ADaM Dataset Validation 
+      (ADSL)\work\02data_raw
+NOTE: Libref ANALYSIS was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: C:\\Users\AFSS-Student\Documents\Internship Series\04.ADaM Dataset Validation 
+      (ADSL)\work\03data_analysis
+NOTE: Libref LISTDIR was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: C:\\Users\AFSS-Student\Documents\Internship Series\04.ADaM Dataset Validation 
+      (ADSL)\work\07.out_listings
+NOTE: Libref OUTPUT was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: C:\\Users\AFSS-Student\Documents\Internship Series\04.ADaM Dataset Validation 
+      (ADSL)\work\09Output
+1727  
+1728  /*DM Dataset specification  According to RSD*/
+
