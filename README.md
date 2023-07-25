@@ -35,7 +35,7 @@ subject.
 |10|DSSTDY| Study Day of Start of Disposition Event |Num |Study day of start of event relative to the sponsor-defined RFSTDTC. Perm|If DSSTDTC1 ge _RFSTDTC THEN DSSTDY=(ds.DSSTDTC1-comvar._RFSTDTC)+1; ELSE DSSTDY=ds.DSSTDTC1-comvar._RFSTDTC|
 
 ## Output
-- [Dataset](https://github.com/theadewole/ADSL-Dataset-Validation/blob/main/qc_adsl.sas7bdat)
-- [Program](https://github.com/theadewole/ADSL-Dataset-Validation/blob/main/QC_ADSL%20(1).sas)
-- [Log](https://github.com/theadewole/ADSL-Dataset-Validation/blob/main/QC_adsl_Log.Log)
-- [Validate](https://github.com/theadewole/ADSL-Dataset-Validation/blob/main/Validate)
+- [Dataset](https://github.com/theadewole/Disposition_Dataset_Validation/blob/main/ds.sas7bdat)
+- [Program](https://github.com/theadewole/Disposition_Dataset_Validation/blob/main/DS.sas)
+- [Log](https://github.com/theadewole/Disposition_Dataset_Validation/blob/main/DS.sas)
+- [Validate](https://github.com/theadewole/Disposition_Dataset_Validation/blob/main/Validate)
