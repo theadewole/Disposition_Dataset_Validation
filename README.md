@@ -3,7 +3,7 @@
 - Description: 		Validation of DS dataset by writing independent SAS code.
 - SAS Version:		STUDIO 
 ## Introduction 
-The project involves validating an already developed Laboratory dataset using the input SDTM datasets and comparing both.
+The project involves validating an already developed disposition dataset using the input SDTM datasets and comparing both.
 - Structure of DS: One record per disposition status or protocol milestone per 
 subject.
 
