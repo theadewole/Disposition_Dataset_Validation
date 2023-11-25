@@ -1,7 +1,7 @@
 # Disposition_Dataset_Validation
 - Project Title: 	Disposition (DS) Dataset Validation
 - Description: 		Validation of DS dataset by writing independent SAS code.
-- SAS Version:		STUDIO 
+- SAS Version:		SAS onDemand for Academics
 ## Introduction 
 The project involves validating an already developed disposition dataset using the input SDTM datasets and comparing both.
 - Structure of DS: One record per disposition status or protocol milestone per 
