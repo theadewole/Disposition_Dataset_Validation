@@ -54,7 +54,7 @@ RUN;
 *===========================================================================================================;
 *Creating USUBJID in DS Dataset and applyoing sort;
 *===========================================================================================================;
-DATA  Ds_1;
+DATA  Ds_1 (DROP=siteid subjid DSCAT DSSCAT);
  	SET MYSNIP.ds;
 	USUBJID=PUT(CATX("-",STUDYID,SITEID,SUBJID),$char30.);
 RUN;
