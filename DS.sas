@@ -117,15 +117,8 @@ PROC SQL;
 QUIT;
 
 *===========================================================================================================;
-*Specifying DSSCAT;
+*Specifying DSSTDY as given in RSD;
 *===========================================================================================================;
-DATA DSSS1;
-	SET DSSS;
-	DSSTDTC1=INPUT(DSSTDTC,anydtdte32.);
-	RFSTDTC=INPUT(_RFSTDTC,anydtdte32.);
-	IF DSSTDTC1 GE RFSTDTC THEN DSSTDY=(DSSTDTC1-RFSTDTC)+1;
-	ELSE DSSTDY=DSSTDTC1-RFSTDTC;
-RUN;
 DATA DSSS1;
 	SET DSSS;
 	DSSTDTC1=INPUT(DSSTDTC,anydtdte32.);
