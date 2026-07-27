@@ -1,0 +1,58 @@
+                                              QC Validation For DS Dataset
+
+
+  Obs  Study Identifier  Domain Abbreviation       Unique Subject Identifier  Sequence Number            Reported Term for the Disposition Event  Standardized Disposition Term  Category for Disposition Event  Subcategory for disposition event   Start Date/Time of disposition event  Study Day of Start of Disposition Event
+-----  ----------------  -------------------  ------------------------------  ---------------  -------------------------------------------------  -----------------------------  ------------------------------  ---------------------------------  -------------------------------------  ---------------------------------------
+    1  CYT21013          DS                   CYT21013-105-015                              1  INFORMED CONSENT OBTAINED                          INFORMED CONSENT OBTAINED      PROTOCOL MILESTONE                                                                                                                              .
+    2  CYT21013          DS                   CYT21013-105-015                              2  RANDOMIZED                                         RANDOMIZED                     PROTOCOL MILESTONE                                                 2008-12-13                                                                   1
+    3  CYT21013          DS                   CYT21013-105-015                              3  SUBJECT LOST TO FOLLOW-UP                          LOST TO FOLLOW-UP              DISPOSITION EVENT               STUDY PARTICIPATION                2009-02-03                                                                  53
+    4  CYT21013          DS                   CYT21013-105-016                              1  INFORMED CONSENT OBTAINED                          INFORMED CONSENT OBTAINED      PROTOCOL MILESTONE                                                                                                                              .
+    5  CYT21013          DS                   CYT21013-105-016                              2  RANDOMIZED                                         RANDOMIZED                     PROTOCOL MILESTONE                                                 2008-12-12                                                                   1
+    6  CYT21013          DS                   CYT21013-105-016                              3  INVESTIGATOR JUDGMENT                              PHYSICIAN DECISION             DISPOSITION EVENT               STUDY PARTICIPATION                2009-04-13                                                                 123
+    7  CYT21013          DS                   CYT21013-105-017                              1  INFORMED CONSENT OBTAINED                          INFORMED CONSENT OBTAINED      PROTOCOL MILESTONE                                                                                                                              .
+    8  CYT21013          DS                   CYT21013-105-017                              2  RANDOMIZED                                         RANDOMIZED                     PROTOCOL MILESTONE                                                 2008-12-13                                                                   1
+    9  CYT21013          DS                   CYT21013-105-017                              3  MAJOR PROTOCOL VIOLATION                           PROTOCOL VIOLATION             DISPOSITION EVENT               STUDY PARTICIPATION                2009-04-16                                                                 125
+   10  CYT21013          DS                   CYT21013-105-018                              1  INFORMED CONSENT OBTAINED                          INFORMED CONSENT OBTAINED      PROTOCOL MILESTONE                                                                                                                              .
+   11  CYT21013          DS                   CYT21013-105-018                              2  RANDOMIZED                                         RANDOMIZED                     PROTOCOL MILESTONE                                                 2008-12-13                                                                   1
+   12  CYT21013          DS                   CYT21013-105-018                              3  SUBJECT DID NOT MEET INCLUSION/EXCLUSION CRITERIA  SCREEN FAILURE                 DISPOSITION EVENT               STUDY PARTICIPATION                2009-05-01                                                                 140
+   13  CYT21013          DS                   CYT21013-105-019                              1  INFORMED CONSENT OBTAINED                          INFORMED CONSENT OBTAINED      PROTOCOL MILESTONE                                                                                                                              .
+   14  CYT21013          DS                   CYT21013-105-019                              2  RANDOMIZED                                         RANDOMIZED                     PROTOCOL MILESTONE                                                 2009-03-16                                                                   1
+   15  CYT21013          DS                   CYT21013-105-019                              3  SUBJECT WITHDREW CONSENT                           WITHDRAWAL OF CONSENT          DISPOSITION EVENT               STUDY PARTICIPATION                2009-05-10                                                                  56
+   16  CYT21013          DS                   CYT21013-105-020                              1  INFORMED CONSENT OBTAINED                          INFORMED CONSENT OBTAINED      PROTOCOL MILESTONE                                                                                                                              .
+   17  CYT21013          DS                   CYT21013-105-020                              2  RANDOMIZED                                         RANDOMIZED                     PROTOCOL MILESTONE                                                 2009-03-16                                                                   1
+   18  CYT21013          DS                   CYT21013-105-020                              3  SUBJECT RELOCATED                                  WITHDRAWAL OF CONSENT          DISPOSITION EVENT               STUDY PARTICIPATION                2009-05-15                                                                  61
+   19  CYT21013          DS                   CYT21013-105-021                              1  INFORMED CONSENT OBTAINED                          INFORMED CONSENT OBTAINED      PROTOCOL MILESTONE                                                                                                                              .
+   20  CYT21013          DS                   CYT21013-105-021                              2  RANDOMIZED                                         RANDOMIZED                     PROTOCOL MILESTONE                                                 2009-03-19                                                                   1
+   21  CYT21013          DS                   CYT21013-105-021                              3  INCARCERATION                                      LOST TO FOLLOW-UP              DISPOSITION EVENT               STUDY PARTICIPATION                2009-05-20                                                                  63
+
+
+Created DS dataset from independent SAS code
+                                              QC Validation For DS Dataset
+
+
+PROC CONTENTS
+-------------------------------------------------------------------------------
+
+Data Set Name: DS
+Observations:  21
+Variables:     10
+
+Variables (in alphabetical order):
+
+  #  Variable  Type    Len  Format  Label
+---  --------  ----  -----  ------  ---------------------------------------
+  1  domain    Char      3          Domain Abbreviation
+  2  DSCAT     Char    200          Category for Disposition Event
+  3  dsdecod   Char    100          Standardized Disposition Term
+  4  DSSCAT    Char    200          Subcategory for disposition event
+  5  DSSEQ      Num      8          Sequence Number
+  6  dsstdtc   Char     10           Start Date/Time of disposition event
+  7  DSSTDY     Num      8          Study Day of Start of Disposition Event
+  8  dsterm    Char    200          Reported Term for the Disposition Event
+  9  studyid   Char      8          Study Identifier
+ 10  usubjid   Char     30          Unique Subject Identifier
+
+-------------------------------------------------------------------------------
+
+
+Created DS dataset from independent SAS code

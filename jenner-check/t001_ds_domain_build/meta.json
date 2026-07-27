@@ -1,0 +1,7 @@
+{
+  "bundle": "t001_ds_domain_build",
+  "source_file": "DS.sas",
+  "source_blob_sha": "11058e5595e8b83517a0836ab7a8142e9920a207",
+  "source_commit": "c8744d4b8c16ecc6969623d03cb5307fb1951f84",
+  "notes": "SDTM DS-domain (disposition) validation pipeline: cleans STUDYID in Comvar, derives USUBJID/DSTERM/DSDECOD across DM/RAND/DS, merges the four sources by USUBJID, recodes DSDECOD to controlled terminology, sets DSCAT/DSSCAT via PROC SQL CASE, computes DSSTDY, assigns DSSEQ, and builds the labeled DS table. Adapted for isolation: a small compatibility block at the top of script.sas points MYSNIP at WORK and supplies shape-compatible Comvar/Dm/rand/ds stand-ins (values mirror the repo's CYT21013DS baseline and exercise every DSDECOD recode branch); the two absolute SAS OnDemand LIBNAMEs, the PROC PRINTTO log redirect, and the terminal PROC COPY + ODS RTF PROC COMPARE against the external Anadata baseline are replaced by a self-contained PROC PRINT + PROC CONTENTS of the created DS. All transformation logic below the setup block is byte-identical to the author's DS.sas. autoexec.sas holds only options obs=100;."
+}
